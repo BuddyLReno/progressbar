@@ -1,0 +1,86 @@
+.ProgressBar {
+  margin: 0 auto;
+  padding: 0 0 2em;
+  list-style: none;
+  position: relative;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.ProgressBar-step {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  text-align: center;
+  position: relative;
+  width: 100%; }
+  .ProgressBar-step:before, .ProgressBar-step:after {
+    content: "";
+    height: 0.3em;
+    background-color: #D7D9E0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: -50%;
+    top: 48%;
+    -webkit-transform: translateY(-48%);
+        -ms-transform: translateY(-48%);
+            transform: translateY(-48%);
+    -webkit-transition: all .25s ease-out;
+    transition: all .25s ease-out; }
+  .ProgressBar-step:after {
+    background-color: #004477;
+    width: 0%; }
+  .ProgressBar-step:first-child:before, .ProgressBar-step:first-child:after {
+    display: none; }
+  .ProgressBar-step.is-complete + .ProgressBar-step.is-current:after,
+  .ProgressBar-step.is-complete + .ProgressBar-step.is-complete:after {
+    width: 100%; }
+  .no-flexbox .ProgressBar-step {
+    float: left;
+    display: inline-block; }
+
+.ProgressBar-icon {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: #D7D9E0;
+  fill: #D7D9E0;
+  border-radius: 50%;
+  padding: 0.3em;
+  max-width: 100%;
+  z-index: 10;
+  position: relative;
+  -webkit-transition: all .25s ease-out;
+  transition: all .25s ease-out; }
+  .is-current > .ProgressBar-icon {
+    fill: #004477;
+    background-color: #004477; }
+  .is-complete > .ProgressBar-icon {
+    fill: #fff;
+    background-color: #004477; }
+
+.ProgressBar-label {
+  display: block;
+  text-transform: uppercase;
+  color: #D7D9E0;
+  position: absolute;
+  padding-top: 0.5em;
+  width: 100%;
+  -webkit-transition: all .25s ease-out;
+  transition: all .25s ease-out; }
+  .is-current > .ProgressBar-label,
+  .is-complete > .ProgressBar-label {
+    color: #004477; }
+
+.wrapper {
+  max-width: 1500px;
+  margin: 4em auto;
+  font-size: 16px; }

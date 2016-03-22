@@ -1,0 +1,101 @@
+$dr-color-gray--light: #D7D9E0;
+$dr-color-blue--dark: #004477;
+$dr-color-white: #fff;
+
+.ProgressBar {
+  margin: 0 auto;
+  padding: 0 0 2em;
+  list-style: none;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ProgressBar-step {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: "";
+    height: 0.3em;
+    background-color: $dr-color-gray--light;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: -50%;
+    top: 48%;
+    transform: translateY(-48%);
+    transition: all .25s ease-out;
+  }
+
+  &:after {
+    background-color: $dr-color-blue--dark;
+    width: 0%;
+  }
+
+  &:first-child:before,
+  &:first-child:after {
+    display: none;
+  }
+
+  &.is-complete + &.is-current:after,
+  &.is-complete + &.is-complete:after {
+    width: 100%;
+  }
+
+  .no-flexbox & {
+    float: left;
+    display: inline-block;
+  }
+}
+
+.ProgressBar-icon {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: $dr-color-gray--light;
+  fill: $dr-color-gray--light;
+  border-radius: 50%;
+  padding: 0.3em;
+  max-width: 100%;
+  z-index: 10;
+  position: relative;
+  transition: all .25s ease-out;
+
+  .is-current > & {
+    fill: $dr-color-blue--dark;
+    background-color: $dr-color-blue--dark;
+  }
+
+  .is-complete > & {
+    fill: $dr-color-white;
+    background-color: $dr-color-blue--dark;
+  }
+}
+
+.ProgressBar-label {
+  display: block;
+  text-transform: uppercase;
+  color: $dr-color-gray--light;
+  position: absolute;
+  padding-top: 0.5em;
+  width: 100%;
+  transition: all .25s ease-out;
+
+  .is-current > &,
+  .is-complete > & {
+    color: $dr-color-blue--dark;
+  }
+}
+
+//FOR CODEPEN FORMATTING
+.wrapper {
+  max-width: 1500px;
+  margin: 4em auto;
+  font-size: 16px;
+}
+//END CODEPEN FORMATTING
